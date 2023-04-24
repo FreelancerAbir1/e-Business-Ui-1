@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../consts/consts.dart';
-import '../../../consts/services.dart';
 
 class CreateUserScreenController extends GetxController {
   ///focusNode here

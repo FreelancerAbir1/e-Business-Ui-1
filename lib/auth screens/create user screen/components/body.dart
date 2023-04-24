@@ -30,7 +30,7 @@ class Body extends GetView<CreateUserScreenController> {
             height: MediaQuery
                 .of(context)
                 .size
-                .height * 0.7,
+                .height * 0.6,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [
