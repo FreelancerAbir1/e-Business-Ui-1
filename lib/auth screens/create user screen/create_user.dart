@@ -6,7 +6,7 @@ import 'components/body.dart';
 
 class CreateUserScreen extends StatelessWidget {
   const CreateUserScreen({Key? key}) : super(key: key);
-
+static const routeName = '/createuserscreen';
   @override
   Widget build(BuildContext context) {
     return BackgroundView(

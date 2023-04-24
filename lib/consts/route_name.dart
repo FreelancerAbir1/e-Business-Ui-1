@@ -27,5 +27,10 @@ final List<GetPage<dynamic>> getPages = [
       page: () => const LoginScreen(),
       binding: InitialBindings()),
 
+  GetPage(
+      name: CreateUserScreen.routeName,
+      page: () => const CreateUserScreen(),
+      binding: InitialBindings()),
+
 
 ];

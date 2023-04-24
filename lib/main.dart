@@ -23,7 +23,6 @@ Future<void> main() async {
   );
   configLoading();
 }
-
 void configLoading() {
   EasyLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)

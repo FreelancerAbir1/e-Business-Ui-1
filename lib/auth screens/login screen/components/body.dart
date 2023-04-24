@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/auth%20screens/create%20user%20screen/create_user.dart';
 import 'package:flutter_application_1/auth%20screens/login%20screen/controller/login_screen_controller.dart';
 import 'package:flutter_application_1/screens/random%20widget/custom_button.dart';
 import 'package:flutter_application_1/screens/random%20widget/custom_small_text.dart';
@@ -29,7 +30,7 @@ class Body extends GetView<LoginScreenController> {
           left: 10,
           right: 10,
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.7,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [
@@ -46,10 +47,8 @@ class Body extends GetView<LoginScreenController> {
               padding: EdgeInsets.all(kDefaultSize.sp),
               child: Form(
                 key: controller.formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                child: ListView(
+                  children: [ SizedBox(height: 02.h),
                     CustomTextField(
                       textInputAction: TextInputAction.next,
                       onFieldSubmitted: (v) {
@@ -66,7 +65,7 @@ class Body extends GetView<LoginScreenController> {
                       hint: enterEmail,
                       label: email,
                       sufficIcon: Icon(Icons.email),
-                    ),
+                    ), SizedBox(height: 02.h),
                   Obx(() =>   CustomTextField(
                       obscureText: controller.isVisiblity.value,
                       textInputAction: TextInputAction.done,
@@ -99,14 +98,14 @@ class Body extends GetView<LoginScreenController> {
                                 color: kPrimaryColor,
                               ),
                       ),
-                    ),),
+                    ),), SizedBox(height: 02.h),
                     CustomMediumText(
                       onTap: () {
 
                       },
                       text: forgetPassword,
                       alignMent: Alignment.centerRight,
-                    ),
+                    ), SizedBox(height: 02.h),
                     CustomButton(
                       onTap: () {
                         if (controller.formKey.currentState!.validate()) {
@@ -117,12 +116,12 @@ class Body extends GetView<LoginScreenController> {
                       },
                       text: login,
                       color: kPrimaryColor,
-                    ),
+                    ), SizedBox(height: 02.h),
                     const CustomSmallText(
-                        text: dontHaveAccount, alignMent: Alignment.center),
+                        text: dontHaveAccount, alignMent: Alignment.center), SizedBox(height: 02.h),
                     CustomButton(
                       onTap: () {
-
+                        Get.toNamed(CreateUserScreen.routeName);
                       },
                       text: signUP,
                       color: kPrimaryColor.shade200,

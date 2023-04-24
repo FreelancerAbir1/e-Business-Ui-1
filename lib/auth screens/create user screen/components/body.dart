@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../consts/consts.dart';
- import '../../../consts/validate_method.dart';
+import '../../../consts/validate_method.dart';
 
 class Body extends GetView<CreateUserScreenController> {
   const Body({
@@ -27,7 +27,10 @@ class Body extends GetView<CreateUserScreenController> {
           left: 10,
           right: 10,
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.7,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [
@@ -44,8 +47,7 @@ class Body extends GetView<CreateUserScreenController> {
               padding: EdgeInsets.all(kDefaultSize.sp),
               child: Form(
                 key: controller.formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: ListView(
                   children: [
                     CustomTextField(
                         textInputAction: TextInputAction.next,
@@ -58,11 +60,12 @@ class Body extends GetView<CreateUserScreenController> {
                           controller.formKey.currentState!.validate();
                         },
                         controller: controller.name,
-                        focusNode: controller.emailFocus,
+                        focusNode: controller.nameFocus,
                         validator: validateName,
                         hint: enterName,
                         label: name,
                         sufficIcon: Icon(Icons.contact_page)),
+                    SizedBox(height: 01.h),
                     CustomTextField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
@@ -79,7 +82,8 @@ class Body extends GetView<CreateUserScreenController> {
                         hint: enterEmail,
                         label: email,
                         sufficIcon: Icon(Icons.email)),
-                    Obx(() => CustomTextField(
+                    SizedBox(height: 01.h),
+                    CustomTextField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.visiblePassword,
                         onFieldSubmitted: (v) {
@@ -97,10 +101,11 @@ class Body extends GetView<CreateUserScreenController> {
                         sufficIcon: IconButton(
                             onPressed: () {
                               controller.isVisible.value =
-                                  !controller.isVisible.value;
+                              !controller.isVisible.value;
                             },
-                            icon: const Icon(Icons.visibility)))),
-                    Obx(() => CustomTextField(
+                            icon: const Icon(Icons.visibility))),
+                    SizedBox(height: 01.h),
+                    CustomTextField(
                         textInputAction: TextInputAction.done,
                         keyboardType: TextInputType.visiblePassword,
                         onChanged: (v) {
@@ -117,43 +122,62 @@ class Body extends GetView<CreateUserScreenController> {
                         sufficIcon: IconButton(
                             onPressed: () {
                               controller.isVisible.value =
-                                  !controller.isVisible.value;
+                              !controller.isVisible.value;
                             },
-                            icon: const Icon(Icons.visibility)))),
-                    CheckboxListTile(
-                      activeColor: kPrimaryColor,
-                      value: true,
-                      onChanged: (value) {},
-                      controlAffinity: ListTileControlAffinity.leading,
-                      title: Text.rich(
-                        TextSpan(
-                            text: iAgree,
-                            style: Theme.of(context).textTheme.labelSmall,
-                            children: [
-                              TextSpan(
-                                text: termCondition,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(color: kPrimaryColor),
-                              ),
-                            ]),
-                      ),
-                    ),
-                    CustomButton(
-                      onTap: () {},
-                      text: signUP,
-                      color: kPrimaryColor,
-                    ),
+                            icon: const Icon(Icons.visibility))),
+                    SizedBox(height: 01.h),
+                    Obx(() {
+                      return CheckboxListTile(
+                        activeColor: kPrimaryColor,
+                        value: controller.isActive.value,
+                        onChanged: (value) {
+                          controller.isActive.value =
+                          !controller.isActive.value;
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: Text.rich(
+                          TextSpan(
+                              text: iAgree,
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .labelSmall,
+                              children: [
+                                TextSpan(
+                                  text: termCondition,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(color: kPrimaryColor),
+                                ),
+                              ]),
+                        ),
+                      );
+                    }),
+                    Obx(() {
+                      return CustomButton(
+                        onTap: () {
+                          if(controller.isActive.value){
+                            print('isActive');
+                          }else{
+                            print('unActive');
+                          }
+                        },
+                        text: signUP,
+                        color: controller.isActive.value
+                            ? kPrimaryColor
+                            : kPrimaryColor.shade100,
+                      );
+                    }),
+                    SizedBox(height: 02.h),
                     Text.rich(
                       TextSpan(
                         children: [
                           const TextSpan(text: alreadyAccount),
                           TextSpan(
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-
-                              },
+                              ..onTap = () {},
                             text: login,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
