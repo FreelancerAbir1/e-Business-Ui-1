@@ -1,4 +1,5 @@
 
+import 'package:get/get.dart';
 import '../../consts/consts.dart';
  import 'components/body.dart';
 
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushNamed(AuthStateChangeScreen.routeName);
+    Get.toNamed(AuthStateChangeScreen.routeName);
     });
     super.initState();
   } 

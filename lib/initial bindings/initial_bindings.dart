@@ -7,5 +7,6 @@ import '../consts/consts.dart';
     Get.lazyPut<ForgotScreenController>(() => ForgotScreenController());
     Get.lazyPut<CreateUserScreenController>(() => CreateUserScreenController());
     Get.lazyPut<BottomNavBarController>(() => BottomNavBarController());
+    Get.lazyPut<ForgotScreenController>(() => ForgotScreenController());
   }
 }

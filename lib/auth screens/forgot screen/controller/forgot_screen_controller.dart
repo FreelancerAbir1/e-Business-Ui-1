@@ -9,7 +9,11 @@ class ForgotScreenController extends GetxController {
   final email = TextEditingController();
 //sendPasswordResetEmail method
  Future sendPasswordResetEmail() async {
-    EasyLoading.show(status: 'Sending');
+   ///Loading method start and after 10 secound stop automatically
+   await EasyLoading.show(status: sending)
+       .then((value) => Timer(const Duration(seconds: 10), () {
+     EasyLoading.dismiss();
+   }));
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: email.text)

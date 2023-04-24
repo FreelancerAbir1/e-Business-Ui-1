@@ -6,7 +6,7 @@ import 'components/body.dart';
 
 class ForgotScreen extends StatelessWidget {
   const ForgotScreen({Key? key}) : super(key: key);
-
+static const routeName = '/forgetscreen';
   @override
   Widget build(BuildContext context) {
     return BackgroundView(

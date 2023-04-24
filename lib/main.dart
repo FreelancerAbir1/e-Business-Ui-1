@@ -21,8 +21,10 @@ Future<void> main() async {
     //   builder: (context) => MyApp(), // Wrap your app
     // ),
   );
+  //easy loading method initialize
   configLoading();
 }
+//easy loading method animation
 void configLoading() {
   EasyLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)
@@ -38,6 +40,8 @@ void configLoading() {
     ..userInteractions = true
     ..dismissOnTap = false;
 }
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   // This widget is the root of your application.

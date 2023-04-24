@@ -33,3 +33,4 @@ const passwordNotMatch = 'Password not matched';
 const loginSuccess = 'Login Success';
 const loading = 'loading...';
 const blackFieldNotAllow = 'Black field not allow ';
+const sending = 'Sending';

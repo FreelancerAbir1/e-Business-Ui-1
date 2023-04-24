@@ -1,9 +1,12 @@
+import 'package:flutter_application_1/auth%20screens/forgot%20screen/forgot_screen.dart';
 import 'package:get/get.dart';
 import '../../../consts/consts.dart';
+
 class Body extends GetView<LoginScreenController> {
   const Body({
     super.key,
   });
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -86,7 +89,9 @@ class Body extends GetView<LoginScreenController> {
                                 : Icon(Icons.visibility)))),
                     SizedBox(height: 02.h),
                     CustomMediumText(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(ForgotScreen.routeName);
+                      },
                       text: forgetPassword,
                       alignMent: Alignment.centerRight,
                     ),

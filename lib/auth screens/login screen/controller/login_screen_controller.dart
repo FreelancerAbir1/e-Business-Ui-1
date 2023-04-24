@@ -20,7 +20,7 @@ class LoginScreenController extends GetxController {
               EasyLoading.dismiss();
             }));
     try {
-      ///here sign in method or login method
+      //here sign in method or login method
       if (email.text.isNotEmpty && password.text.isNotEmpty) {
         final result = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email.text.trim(),

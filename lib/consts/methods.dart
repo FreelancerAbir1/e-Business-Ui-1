@@ -5,8 +5,6 @@ BoxDecoration buildDecoration({
 }) {
   return BoxDecoration(color: color,borderRadius: radius,boxShadow: boxShadow);
 }
-
-
 ThemeData buildThemeData() {
   return ThemeData(
     primaryColor: kPrimaryColor,

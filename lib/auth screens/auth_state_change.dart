@@ -9,6 +9,16 @@ class AuthStateChangeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginScreen();
+    return StreamBuilder<User?>(
+        stream:  authInstance,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashScreen();
+          }
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const BottomNavBar();
+          }
+            return LoginScreen();
+        });
   }
 }

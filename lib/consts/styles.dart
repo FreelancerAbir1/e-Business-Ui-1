@@ -8,7 +8,8 @@ const kDefaultSize = 21;
 FirebaseAuth auth = FirebaseAuth.instance;
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 CollectionReference usersDataCollection = FirebaseFirestore.instance.collection('userData').doc().collection(auth.currentUser!.uid);
-///Easy loading method
+final Stream<User?> authInstance = auth.authStateChanges();
+//Easy loading method
 /*
 EasyLoading.show(status: 'loading...');
 

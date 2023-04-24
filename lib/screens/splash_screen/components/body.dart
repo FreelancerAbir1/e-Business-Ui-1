@@ -1,4 +1,3 @@
-
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../consts/consts.dart';
@@ -13,20 +12,18 @@ class Body extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [       const Spacer(),
+      children: [
+        const Spacer(),
         const PrimaryIcons(),
-        const SizedBox(
-          height: 05,
-        ),
+        const SizedBox(height: 05),
         const BusinessText(text: appname),
-        const VersionText(
-          appversion: appversion,
-        ),
-       const Spacer(),
+        const VersionText(appversion: appversion),
+        const VersionText(appversion: credits),
+        const Spacer(),
         const Align(
-          alignment: Alignment.bottomCenter,
-          child: CircularProgressIndicator(),
-        ),SizedBox(height: 04.h,)
+            alignment: Alignment.bottomCenter,
+            child: CircularProgressIndicator()),
+        SizedBox(height: 04.h)
       ],
     );
   }

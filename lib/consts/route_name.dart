@@ -32,4 +32,8 @@ final List<GetPage<dynamic>> getPages = [
       name: BottomNavBar.routeName,
       page: () => const BottomNavBar(),
       binding: InitialBindings()),
+  GetPage(
+      name: ForgotScreen.routeName,
+      page: () => const ForgotScreen(),
+      binding: InitialBindings()),
 ];
