@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "916296928419",
+    "project_id": "e-business-ui-1",
+    "storage_bucket": "e-business-ui-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916296928419:android:23073f7dc00bac20638316",
+        "android_client_info": {
+          "package_name": "com.example.e_business_ui_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916296928419-4b8lhq9c31rnbcgnndg46osu5kjve4k4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_business_ui_1",
+            "certificate_hash": "362803176842f6ac223da67bb10fedac45d5ec00"
+          }
+        },
+        {
+          "client_id": "916296928419-o9nndovu2gad5naot00f6bq2lqejq59o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0bEC0wm1NtKzlIEoyHTOJPJmLynr28j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916296928419-o9nndovu2gad5naot00f6bq2lqejq59o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "916296928419-t8sq6akdnc8s10dgcuuddpnalcionnk5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eBusinessUi1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916296928419:android:1c75b8458a51bfc1638316",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916296928419-o9nndovu2gad5naot00f6bq2lqejq59o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0bEC0wm1NtKzlIEoyHTOJPJmLynr28j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916296928419-o9nndovu2gad5naot00f6bq2lqejq59o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "916296928419-t8sq6akdnc8s10dgcuuddpnalcionnk5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eBusinessUi1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+
+const kDefaultSize = 21;
