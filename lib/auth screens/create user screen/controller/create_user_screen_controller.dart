@@ -11,18 +11,23 @@ class CreateUserScreenController extends GetxController {
   final FocusNode emailFocus = FocusNode();
   final FocusNode passwordFocus = FocusNode();
   final FocusNode retypePasswordFocus = FocusNode();
+
   ///is signUp button is active bool
   RxBool isActive = false.obs;
+
   //form key
   final formKey = GlobalKey<FormState>();
+
   //TextEditing controller here
   final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController reTypePassword = TextEditingController();
+
   //isVisible
   RxBool isVisible = false.obs;
   RxBool isVisiblee = false.obs;
+
   //Create use method here
   Future createUserWithEmailAndPassword() async {
     ///Loading method start and after 10 secound stop automatically
@@ -52,13 +57,18 @@ class CreateUserScreenController extends GetxController {
     }
   }
   Future adduserData() async {
-    return usersDataCollection.add({
-      'name': name.text.trim().toString(),
-      'email': email.text.trim().toString(),
-      'password': password.text.trim().toString()
-    }).then((value) {
-      Get.offAllNamed(BottomNavBar.routeName);
-      EasyLoading.showSuccess(accountCreatedSuccessfully);
-    });
+    try {
+      return usersDataCollection.add({
+        'name': name.text.trim().toString(),
+        'email': email.text.trim().toString(),
+        'password': password.text.trim().toString()
+      }).then((value) {
+        Get.offAllNamed(BottomNavBar.routeName);
+        EasyLoading.showSuccess(accountCreatedSuccessfully);
+      });
+    } catch (e) {
+      auth.signOut();
+      EasyLoading.showInfo(loggedOut);
+    }
   }
 }

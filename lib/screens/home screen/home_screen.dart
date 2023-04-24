@@ -1,10 +1,13 @@
 import '../../consts/consts.dart';
+import 'components/body.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  static const routeName = '/homescreen';
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
-      body: Container(color: kPrimaryColor),
+      backgroundColor: kPrimaryColor,
+      body:  Body(),
     );
   }
 }

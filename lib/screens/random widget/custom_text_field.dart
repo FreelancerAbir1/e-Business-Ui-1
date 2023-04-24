@@ -46,7 +46,7 @@ class CustomTextField extends StatelessWidget {
         labelText: label,
         focusedBorder: InputBorder.none,
         enabledBorder: InputBorder.none,
-        hintStyle: Theme.of(context).textTheme.labelMedium!.copyWith(),
+        hintStyle: Theme.of(context).textTheme.labelMedium!.copyWith(color: kTextColor),
         labelStyle: Theme.of(context)
             .textTheme
             .labelMedium!

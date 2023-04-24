@@ -20,7 +20,7 @@ class Body extends GetView<LoginScreenController> {
           left: 10,
           right: 10,
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height:Get.height * 0.7,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [

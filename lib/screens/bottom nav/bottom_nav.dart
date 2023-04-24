@@ -11,10 +11,10 @@ static const routeName = '/bottomnavbar';
       bottomNavigationBar: BottomBarLabelSlide(
         selectedIndex: controller.currentIndex.value,
         items: [
-          BottomBarItem(iconData: Icons.home, label: 'Home'),
-          BottomBarItem(iconData: Icons.chat, label: 'Chat'),
-          BottomBarItem(iconData: Icons.notifications, label: 'Categories'),
-          BottomBarItem(iconData: Icons.settings, label: 'Profile'),
+          BottomBarItem(iconData: Icons.home, label:home),
+          BottomBarItem(iconData: Icons. category, label: categories),
+          BottomBarItem(iconData: Icons.shopping_cart, label: cart),
+          BottomBarItem(iconData: Icons.account_circle, label:account),
         ],
         onSelect: (index) {
           controller.currentIndex.value = index;

@@ -36,4 +36,8 @@ final List<GetPage<dynamic>> getPages = [
       name: ForgotScreen.routeName,
       page: () => const ForgotScreen(),
       binding: InitialBindings()),
+  GetPage(
+      name: HomeScreen.routeName,
+      page: () => const HomeScreen(),
+      binding: InitialBindings()),
 ];
