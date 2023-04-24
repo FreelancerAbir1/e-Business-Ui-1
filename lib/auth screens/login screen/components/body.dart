@@ -1,22 +1,9 @@
-import 'package:flutter_application_1/auth%20screens/create%20user%20screen/create_user.dart';
-import 'package:flutter_application_1/auth%20screens/login%20screen/controller/login_screen_controller.dart';
-import 'package:flutter_application_1/screens/random%20widget/custom_button.dart';
-import 'package:flutter_application_1/screens/random%20widget/custom_small_text.dart';
-import 'package:flutter_application_1/screens/random%20widget/custom_text_field.dart';
-import 'package:flutter_application_1/screens/random%20widget/random_medium_text.dart';
-import 'package:flutter_application_1/screens/splash_screen/components/primary_icons.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sign_in_button/sign_in_button.dart';
-
 import '../../../consts/consts.dart';
-import '../../../consts/validate_method.dart';
-
 class Body extends GetView<LoginScreenController> {
   const Body({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -94,10 +81,8 @@ class Body extends GetView<LoginScreenController> {
                                   !controller.isVisiblity.value;
                             },
                             icon: controller.isVisiblity.value
-                                ? Icon(
-                                    Icons.visibility_off,
-                                    color: kPrimaryColor,
-                                  )
+                                ? Icon(Icons.visibility_off,
+                                    color: kPrimaryColor)
                                 : Icon(Icons.visibility)))),
                     SizedBox(height: 02.h),
                     CustomMediumText(
@@ -111,7 +96,7 @@ class Body extends GetView<LoginScreenController> {
                         if (controller.formKey.currentState!.validate()) {
                           controller.signInWithEmailAndPassword();
                         } else {
-                          EasyLoading.showToast('Something error');
+                          EasyLoading.showToast(blackFieldNotAllow);
                         }
                       },
                       text: login,

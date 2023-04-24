@@ -1,29 +1,21 @@
-import 'dart:async';
-import 'package:flutter_application_1/screens/bottom%20nav/bottom_nav.dart';
+
 import 'package:get/get.dart';
 import '../../../consts/consts.dart';
-
 class LoginScreenController extends GetxController {
   //! focus method
   final FocusNode emailFocus = FocusNode();
   final FocusNode passwordFocus = FocusNode();
-
   // Here is  Global key
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   //password obscure bool
   RxBool isVisiblity = false.obs;
-
   //TextEditing controller
   final email = TextEditingController(text: 'abir80503@gmail.com');
-  final password = TextEditingController(text: 'abir80503');
-
-// Sign in method here.This method provide firebase_auth.
-// signInWithEmailAndPassword():
-
+  final password = TextEditingController(text: 'abir80503');// Sign in method here.This method provide firebase_auth.
+// signInWithEmailAndPassword();
   Future signInWithEmailAndPassword() async {
     ///Loading method start and after 10 secound stop automatically
-    await EasyLoading.show(status: 'loading...')
+    await EasyLoading.show(status: loading)
         .then((value) => Timer(const Duration(seconds: 10), () {
               EasyLoading.dismiss();
             }));
@@ -36,12 +28,9 @@ class LoginScreenController extends GetxController {
         );
         final User? user = result.user;
         if (user != null) {
-          EasyLoading.showSuccess('Login Success');
+          EasyLoading.showSuccess(loginSuccess);
           Get.offAllNamed(BottomNavBar.routeName);
         }
-      } else if (password.text.isEmpty || password.text.isEmpty) {
-
-        EasyLoading.showError('Black field not allow ');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

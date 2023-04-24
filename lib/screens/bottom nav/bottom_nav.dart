@@ -1,6 +1,5 @@
 
-import 'package:flutter_application_1/screens/bottom%20nav/controller/bottom_nav_controller.dart';
-import 'package:flutter_application_1/screens/home%20screen/home_screen.dart';
+
 import 'package:get/get.dart';
 import '../../consts/consts.dart';
 class BottomNavBar extends GetView<BottomNavBarController> {

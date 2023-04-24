@@ -1,6 +1,4 @@
-import 'package:flutter_application_1/screens/splash_screen/components/business_text.dart';
-import 'package:flutter_application_1/screens/splash_screen/components/primary_icons.dart';
-import 'package:flutter_application_1/screens/splash_screen/components/version_text.dart';
+
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../consts/consts.dart';

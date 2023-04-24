@@ -1,6 +1,7 @@
 const appname = "e-Business";
 const appversion = "Version 1.0.0";
 const credits = "Developed by Abir";
+//others string
 const name = 'Name';
 const enterName = 'Enter your name ';
 const email = 'Email';
@@ -13,7 +14,7 @@ const retypePassword = 'Retype your Password';
 const forgetPassword = 'Forget Password';
 const login = 'Log In';
 const signUP = 'Sign Up';
-const dontHaveAccount = 'Dont have an account?';
+const dontHaveAccount = 'Don\'t have an account?';
 const alreadyAccount = 'Already have an account? ';
 const iAgree = 'I agree the ';
 const termCondition = 'Term Conditions & Privacy Policy';
@@ -29,3 +30,6 @@ const availableScreen = 'availableScreen';
 const creatingAccount = 'Creating Account';
 const accountCreatedSuccessfully ='Account created successfully';
 const passwordNotMatch = 'Password not matched';
+const loginSuccess = 'Login Success';
+const loading = 'loading...';
+const blackFieldNotAllow = 'Black field not allow ';
