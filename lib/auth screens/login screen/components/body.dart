@@ -10,7 +10,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 import '../../../consts/consts.dart';
- import '../../../consts/validate_method.dart';
+import '../../../consts/validate_method.dart';
 
 class Body extends GetView<LoginScreenController> {
   const Body({
@@ -30,7 +30,7 @@ class Body extends GetView<LoginScreenController> {
           left: 10,
           right: 10,
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.7,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [
@@ -48,7 +48,8 @@ class Body extends GetView<LoginScreenController> {
               child: Form(
                 key: controller.formKey,
                 child: ListView(
-                  children: [ SizedBox(height: 02.h),
+                  children: [
+                    SizedBox(height: 02.h),
                     CustomTextField(
                       textInputAction: TextInputAction.next,
                       onFieldSubmitted: (v) {
@@ -65,47 +66,46 @@ class Body extends GetView<LoginScreenController> {
                       hint: enterEmail,
                       label: email,
                       sufficIcon: Icon(Icons.email),
-                    ), SizedBox(height: 02.h),
-                  Obx(() =>   CustomTextField(
-                      obscureText: controller.isVisiblity.value,
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.visiblePassword,
-                      onChanged: (v) {
-                        controller.formKey.currentState!.validate();
-                      },
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context).unfocus();
-                        if (controller.formKey.currentState!.validate()) {
-                          controller.signInWithEmailAndPassword();
-                        } else {
-                          EasyLoading.showToast('Something error');
-                        }
-                      },
-                      controller: controller.password,
-                      focusNode: controller.passwordFocus,
-                      validator: validatePassword,
-                      hint: enterPassword,
-                      label: password,
-                      sufficIcon: IconButton(
-                        onPressed: () {
-                          controller.isVisiblity.value =
-                              !controller.isVisiblity.value;
+                    ),
+                    SizedBox(height: 02.h),
+                    Obx(() => CustomTextField(
+                        obscureText: controller.isVisiblity.value,
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.visiblePassword,
+                        onChanged: (v) {
+                          controller.formKey.currentState!.validate();
                         },
-                        icon: controller.isVisiblity.value
-                            ? Icon(Icons.visibility)
-                            : Icon(
-                                Icons.visibility_off,
-                                color: kPrimaryColor,
-                              ),
-                      ),
-                    ),), SizedBox(height: 02.h),
+                        onFieldSubmitted: (v) {
+                          FocusScope.of(context).unfocus();
+                          if (controller.formKey.currentState!.validate()) {
+                            controller.signInWithEmailAndPassword();
+                          } else {
+                            EasyLoading.showToast('Something error');
+                          }
+                        },
+                        controller: controller.password,
+                        focusNode: controller.passwordFocus,
+                        validator: validatePassword,
+                        hint: enterPassword,
+                        label: password,
+                        sufficIcon: IconButton(
+                            onPressed: () {
+                              controller.isVisiblity.value =
+                                  !controller.isVisiblity.value;
+                            },
+                            icon: controller.isVisiblity.value
+                                ? Icon(
+                                    Icons.visibility_off,
+                                    color: kPrimaryColor,
+                                  )
+                                : Icon(Icons.visibility)))),
+                    SizedBox(height: 02.h),
                     CustomMediumText(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       text: forgetPassword,
                       alignMent: Alignment.centerRight,
-                    ), SizedBox(height: 02.h),
+                    ),
+                    SizedBox(height: 02.h),
                     CustomButton(
                       onTap: () {
                         if (controller.formKey.currentState!.validate()) {
@@ -116,9 +116,11 @@ class Body extends GetView<LoginScreenController> {
                       },
                       text: login,
                       color: kPrimaryColor,
-                    ), SizedBox(height: 02.h),
+                    ),
+                    SizedBox(height: 02.h),
                     const CustomSmallText(
-                        text: dontHaveAccount, alignMent: Alignment.center), SizedBox(height: 02.h),
+                        text: dontHaveAccount, alignMent: Alignment.center),
+                    SizedBox(height: 02.h),
                     CustomButton(
                       onTap: () {
                         Get.toNamed(CreateUserScreen.routeName);

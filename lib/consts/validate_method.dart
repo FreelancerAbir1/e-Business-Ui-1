@@ -22,9 +22,9 @@ String? validatePassword(String? value) {
   if (passNonNullValue.isEmpty) {
     EasyLoading.dismiss();
     return ("Password is required");
-  } else if (passNonNullValue.length < 6) {
+  } else if (passNonNullValue.length <= 5) {
     EasyLoading.dismiss();
-    return ("Password Must be more than 5 characters");
+    return ("Password Must be more than 6 characters");
     // } else if (!regex.hasMatch(passNonNullValue)) {
     //   return ("Password should contain upper,lower,digit and Special character ");
   }

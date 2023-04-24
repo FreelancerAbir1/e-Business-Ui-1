@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 const regular = "regular";
 const semibold = "semibold";
 const bold = "bold";
 const kDefaultSize = 21;
 FirebaseAuth auth = FirebaseAuth.instance;
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+CollectionReference usersDataCollection = FirebaseFirestore.instance.collection('userData');
 ///Easy loading method
 /*
 EasyLoading.show(status: 'loading...');

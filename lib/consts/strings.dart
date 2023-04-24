@@ -28,3 +28,5 @@ const homeScreen = 'homeScreen';
 const bottomNav = 'bottomNav';
 const availableScreen = 'availableScreen';
 const creatingAccount = 'Creating Account';
+const accountCreatedSuccessfully ='Account created successfully';
+const passwordNotMatch = 'Password not matched';

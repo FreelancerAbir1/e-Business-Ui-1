@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter_application_1/auth%20screens/create%20user%20screen/controller/create_user_screen_controller.dart';
+import 'package:flutter_application_1/auth%20screens/login%20screen/login_screen.dart';
 import 'package:flutter_application_1/screens/random%20widget/custom_button.dart';
 import 'package:flutter_application_1/screens/random%20widget/custom_text_field.dart';
 import 'package:flutter_application_1/screens/splash_screen/components/primary_icons.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
 import '../../../consts/consts.dart';
 import '../../../consts/validate_method.dart';
 
@@ -18,19 +18,13 @@ class Body extends GetView<CreateUserScreenController> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Align(
-          alignment: Alignment.topCenter,
-          child: PrimaryIcons(),
-        ),
+        const Align(alignment: Alignment.topCenter, child: PrimaryIcons()),
         Positioned(
           top: 6.h,
           left: 10,
           right: 10,
           child: Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.6,
+            height: Get.height * 0.7,
             margin: EdgeInsets.all(kDefaultSize.sp),
             decoration: buildDecoration(
                 boxShadow: [
@@ -83,29 +77,38 @@ class Body extends GetView<CreateUserScreenController> {
                         label: email,
                         sufficIcon: Icon(Icons.email)),
                     SizedBox(height: 01.h),
-                    CustomTextField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.visiblePassword,
-                        onFieldSubmitted: (v) {
-                          FocusScope.of(context)
-                              .requestFocus(controller.retypePasswordFocus);
-                        },
-                        onChanged: (v) {
-                          controller.formKey.currentState!.validate();
-                        },
-                        controller: controller.password,
-                        focusNode: controller.passwordFocus,
-                        validator: validatePassword,
-                        hint: enterPassword,
-                        label: password,
-                        sufficIcon: IconButton(
-                            onPressed: () {
-                              controller.isVisible.value =
-                              !controller.isVisible.value;
-                            },
-                            icon: const Icon(Icons.visibility))),
+                    Obx(
+                      () => CustomTextField(
+                          obscureText: controller.isVisible.value,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.visiblePassword,
+                          onFieldSubmitted: (v) {
+                            FocusScope.of(context)
+                                .requestFocus(controller.retypePasswordFocus);
+                          },
+                          onChanged: (v) {
+                            controller.formKey.currentState!.validate();
+                          },
+                          controller: controller.password,
+                          focusNode: controller.passwordFocus,
+                          validator: validatePassword,
+                          hint: enterPassword,
+                          label: password,
+                          sufficIcon: IconButton(
+                              onPressed: () {
+                                controller.isVisible.value =
+                                    !controller.isVisible.value;
+                              },
+                              icon: controller.isVisible.value
+                                  ? Icon(
+                                      Icons.visibility_off,
+                                      color: kPrimaryColor,
+                                    )
+                                  : Icon(Icons.visibility))),
+                    ),
                     SizedBox(height: 01.h),
-                    CustomTextField(
+                    Obx(() => CustomTextField(
+                        obscureText: controller.isVisiblee.value,
                         textInputAction: TextInputAction.done,
                         keyboardType: TextInputType.visiblePassword,
                         onChanged: (v) {
@@ -121,10 +124,15 @@ class Body extends GetView<CreateUserScreenController> {
                         label: password,
                         sufficIcon: IconButton(
                             onPressed: () {
-                              controller.isVisible.value =
-                              !controller.isVisible.value;
+                              controller.isVisiblee.value =
+                                  !controller.isVisiblee.value;
                             },
-                            icon: const Icon(Icons.visibility))),
+                            icon: controller.isVisiblee.value
+                                ? Icon(
+                                    Icons.visibility_off,
+                                    color: kPrimaryColor,
+                                  )
+                                : Icon(Icons.visibility)))),
                     SizedBox(height: 01.h),
                     Obx(() {
                       return CheckboxListTile(
@@ -132,43 +140,37 @@ class Body extends GetView<CreateUserScreenController> {
                         value: controller.isActive.value,
                         onChanged: (value) {
                           controller.isActive.value =
-                          !controller.isActive.value;
+                              !controller.isActive.value;
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Text.rich(
                           TextSpan(
                               text: iAgree,
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .labelSmall,
+                              style: Theme.of(context).textTheme.labelSmall,
                               children: [
                                 TextSpan(
-                                  text: termCondition,
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .labelSmall!
-                                      .copyWith(color: kPrimaryColor),
-                                ),
+                                    text: termCondition,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .copyWith(color: kPrimaryColor))
                               ]),
                         ),
                       );
                     }),
                     Obx(() {
                       return CustomButton(
-                        onTap: () {
-                          if(controller.isActive.value){
-                            print('isActive');
-                          }else{
-                            print('unActive');
-                          }
-                        },
-                        text: signUP,
-                        color: controller.isActive.value
-                            ? kPrimaryColor
-                            : kPrimaryColor.shade100,
-                      );
+                          onTap: () {
+                            if (controller.isActive.value) {
+                              controller.createUserWithEmailAndPassword();
+                            } else {
+                              print('unActive');
+                            }
+                          },
+                          text: signUP,
+                          color: controller.isActive.value
+                              ? kPrimaryColor
+                              : kPrimaryColor.shade100);
                     }),
                     SizedBox(height: 02.h),
                     Text.rich(
@@ -176,14 +178,15 @@ class Body extends GetView<CreateUserScreenController> {
                         children: [
                           const TextSpan(text: alreadyAccount),
                           TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {},
-                            text: login,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: kBlue,
-                                fontSize: 20.sp),
-                          ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Get.offAllNamed(LoginScreen.routeName);
+                                },
+                              text: login,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: kBlue,
+                                  fontSize: 20.sp))
                         ],
                       ),
                     )

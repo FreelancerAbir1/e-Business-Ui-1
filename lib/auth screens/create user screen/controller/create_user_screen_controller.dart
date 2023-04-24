@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 
 import '../../../consts/consts.dart';
@@ -8,36 +10,35 @@ class CreateUserScreenController extends GetxController {
   final FocusNode emailFocus = FocusNode();
   final FocusNode passwordFocus = FocusNode();
   final FocusNode retypePasswordFocus = FocusNode();
-
   ///is signUp button is active bool
   RxBool isActive = false.obs;
-
-  ///form key
+  //form key
   final formKey = GlobalKey<FormState>();
-
   //TextEditing controller here
   final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController reTypePassword = TextEditingController();
-
   //isVisible
   RxBool isVisible = false.obs;
-
-  ///Create use method here
+  RxBool isVisiblee = false.obs;
+  //Create use method here
   Future createUserWithEmailAndPassword() async {
-    EasyLoading.show(status: creatingAccount);
+    ///Loading method start and after 10 secound stop automatically
+    await EasyLoading.show(status: creatingAccount)
+        .then((value) => Timer(const Duration(seconds: 10), () {
+              EasyLoading.dismiss();
+            }));
     try {
       if (email.text.isNotEmpty && password.text == reTypePassword.text) {
         final result = await auth.createUserWithEmailAndPassword(
             email: email.text.trim(), password: password.text.trim());
         if (result.user != null) {
-          Get.offAllNamed(bottomNav);
-          EasyLoading.showSuccess('Account created successfully');
+          adduserData();
         }
       } else if (email.text.isNotEmpty &&
           password.text != reTypePassword.text) {
-        EasyLoading.showError('Password not matched');
+        EasyLoading.showError(passwordNotMatch);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -48,5 +49,15 @@ class CreateUserScreenController extends GetxController {
         EasyLoading.showError(e.message.toString());
       }
     }
+  }
+  Future adduserData() async {
+    return usersDataCollection.add({
+      'name': name.text.trim().toString(),
+      'email': email.text.trim().toString(),
+      'password': password.text.trim().toString()
+    }).then((value) {
+      Get.offAllNamed(bottomNav);
+      EasyLoading.showSuccess(accountCreatedSuccessfully);
+    });
   }
 }
