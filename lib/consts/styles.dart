@@ -4,9 +4,10 @@ const regular = "regular";
 const semibold = "semibold";
 const bold = "bold";
 const kDefaultSize = 21;
+//Instance here
 FirebaseAuth auth = FirebaseAuth.instance;
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-CollectionReference usersDataCollection = FirebaseFirestore.instance.collection('userData');
+CollectionReference usersDataCollection = FirebaseFirestore.instance.collection('userData').doc().collection(auth.currentUser!.uid);
 ///Easy loading method
 /*
 EasyLoading.show(status: 'loading...');

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_application_1/screens/bottom%20nav/bottom_nav.dart';
 import 'package:get/get.dart';
 
 import '../../../consts/consts.dart';
@@ -56,7 +57,7 @@ class CreateUserScreenController extends GetxController {
       'email': email.text.trim().toString(),
       'password': password.text.trim().toString()
     }).then((value) {
-      Get.offAllNamed(bottomNav);
+      Get.offAllNamed(BottomNavBar.routeName);
       EasyLoading.showSuccess(accountCreatedSuccessfully);
     });
   }

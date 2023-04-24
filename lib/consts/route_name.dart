@@ -28,4 +28,8 @@ final List<GetPage<dynamic>> getPages = [
       name: CreateUserScreen.routeName,
       page: () => const CreateUserScreen(),
       binding: InitialBindings()),
+  GetPage(
+      name: BottomNavBar.routeName,
+      page: () => const BottomNavBar(),
+      binding: InitialBindings()),
 ];

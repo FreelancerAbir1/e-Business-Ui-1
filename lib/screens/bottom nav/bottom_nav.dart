@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../consts/consts.dart';
 class BottomNavBar extends GetView<BottomNavBarController> {
   const BottomNavBar({Key? key}) : super(key: key);
-
+static const routeName = '/bottomnavbar';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

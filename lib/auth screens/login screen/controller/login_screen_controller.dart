@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter_application_1/screens/bottom%20nav/bottom_nav.dart';
 import 'package:get/get.dart';
 import '../../../consts/consts.dart';
 
@@ -36,7 +37,7 @@ class LoginScreenController extends GetxController {
         final User? user = result.user;
         if (user != null) {
           EasyLoading.showSuccess('Login Success');
-          Get.offAllNamed(bottomNav);
+          Get.offAllNamed(BottomNavBar.routeName);
         }
       } else if (password.text.isEmpty || password.text.isEmpty) {
 

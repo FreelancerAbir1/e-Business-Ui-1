@@ -116,6 +116,14 @@ class Body extends GetView<CreateUserScreenController> {
                         },
                         onFieldSubmitted: (v) {
                           FocusScope.of(context).unfocus();
+                          if (controller.isActive.value) {
+                            if (controller.formKey.currentState!.validate()) {
+                              controller.createUserWithEmailAndPassword();
+                            }
+                          } else {
+                            EasyLoading.showToast(
+                                'Please agree term & condition');
+                          }
                         },
                         controller: controller.reTypePassword,
                         focusNode: controller.retypePasswordFocus,
@@ -162,9 +170,12 @@ class Body extends GetView<CreateUserScreenController> {
                       return CustomButton(
                           onTap: () {
                             if (controller.isActive.value) {
-                              controller.createUserWithEmailAndPassword();
+                              if (controller.formKey.currentState!.validate()) {
+                                controller.createUserWithEmailAndPassword();
+                              }
                             } else {
-                              print('unActive');
+                              EasyLoading.showToast(
+                                  'Please agree term & condition');
                             }
                           },
                           text: signUP,
