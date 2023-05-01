@@ -1,5 +1,6 @@
 
 
+import 'package:flutter_application_1/screens/home%20screen/account/account_screen.dart';
 import 'package:get/get.dart';
 import '../../consts/consts.dart';
 class BottomNavBar extends GetView<BottomNavBarController> {
@@ -31,9 +32,7 @@ static const routeName = '/bottomnavbar';
             Container(
               color: Colors.blue,
             ),
-            Container(
-              color: Colors.yellow,
-            ),
+            AccountScreen()
           ],
         );
       }),

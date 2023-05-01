@@ -17,7 +17,7 @@ class Body extends GetView<HomeScreenController> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SearchBar(search: controller.search),
+        SearchBar(),
         CarouselSlider(
             items: imageItems,
             options: CarouselOptions(
@@ -44,17 +44,15 @@ class Body extends GetView<HomeScreenController> {
 class SearchBar extends StatelessWidget {
   const SearchBar({
     super.key,
-  required  this.search,
   });
-
-  final TextEditingController search;
 
   @override
   Widget build(BuildContext context) {
     return SearchBarAnimation(
-        textEditingController:  search,
+        textEditingController: TextEditingController(),
         isOriginalAnimation: true,
         enableKeyboardFocus: true,
+        onChanged: (v) {},
         onExpansionComplete: () {
           debugPrint('do something just after search box is opened.');
         },

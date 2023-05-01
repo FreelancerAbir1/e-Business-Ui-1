@@ -35,6 +35,7 @@ const loading = 'loading...';
 const blackFieldNotAllow = 'Black field not allow ';
 const sending = 'Sending';
 const loggedOut = 'Logged Out';
+const logOut = 'Log out';
 const account =  'Account';
 const cart = 'Cart';
 const categories = 'Categories';
