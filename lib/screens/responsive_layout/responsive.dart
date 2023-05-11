@@ -4,45 +4,39 @@ import 'package:responsive_builder/responsive_builder.dart';
 import '../../consts/consts.dart';
 
 // Use the widget
+class Responsive extends StatelessWidget {
+  final Widget mobile;
+  final Widget tablet;
+  final Widget desktop;
+  const Responsive({
+    Key? key,
+    required this.mobile,
+    required this.tablet,
+    required this.desktop,
+  }) : super(key: key);
+  // screen sizes
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
-class ResponsiveViewer extends StatelessWidget {
-  const ResponsiveViewer({Key? key}) : super(key: key);
-  static const routeName = '/';
+  static bool isTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width < 1000 &&
+          MediaQuery.of(context).size.width >= 600;
+
+  static bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 1000;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ResponsiveBuilder(
-        builder: (context, sizingInformation) {
-// Check the sizing information here and return your UI
-          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-            return const Center(
-              child: Text('desktop'),
-            );
-          }
-
-          if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
-            return const Center(
-              child: Text('tablet'),
-            );
-          }
-
-          if (sizingInformation.deviceScreenType == DeviceScreenType.watch) {
-            return const Center(
-              child: Text('watch'),
-            );
-          }
-
-          //! here android navigate---------------------------------------
-          if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
-            return const SplashScreen();
-          }
-
-          return const Center(
-            child: Text('any'),
-          );
-        },
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth >= 1000) {
+          return desktop;
+        } else if (constraints.maxWidth >= 600) {
+          return tablet;
+        } else {
+          return mobile;
+        }
+      },
     );
   }
 }

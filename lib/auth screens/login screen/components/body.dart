@@ -1,4 +1,5 @@
 import 'package:flutter_application_1/auth%20screens/forgot%20screen/forgot_screen.dart';
+import 'package:flutter_application_1/screens/random%20widget/forget_text.dart';
 import 'package:get/get.dart';
 import '../../../consts/consts.dart';
 
@@ -11,9 +12,17 @@ class Body extends GetView<LoginScreenController> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.topCenter,
-          child: PrimaryIcons(),
+          child: Column(
+            children: const [
+              PrimaryIcons(),
+              SizedBox(
+                height: 05,
+              ),
+              CustomLargeText(text: 'Welcome Back!', color: kPrimaryTextColor),
+            ],
+          ),
         ),
         Positioned(
           top: 8.h,
@@ -38,6 +47,7 @@ class Body extends GetView<LoginScreenController> {
               child: Form(
                 key: controller.formKey,
                 child: ListView(
+
                   children: [
                     SizedBox(height: 02.h),
                     CustomTextField(

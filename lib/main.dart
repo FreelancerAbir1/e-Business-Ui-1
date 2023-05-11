@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,'
         theme: buildThemeData(),
-        initialRoute: ResponsiveViewer.routeName,
+        initialRoute:SplashScreen.routeName,
          getPages: getPages,
         builder: EasyLoading.init(),
       );

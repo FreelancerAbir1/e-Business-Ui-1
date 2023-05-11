@@ -3,6 +3,7 @@ import 'package:flutter_application_1/auth%20screens/create%20user%20screen/crea
 import 'package:flutter_application_1/auth%20screens/forgot%20screen/forgot_screen.dart';
 import 'package:flutter_application_1/auth%20screens/login%20screen/login_screen.dart';
 import 'package:flutter_application_1/auth%20screens/update%20password%20screen/update_password.dart';
+import 'package:flutter_application_1/consts/consts.dart';
 import 'package:flutter_application_1/consts/strings.dart';
 import 'package:flutter_application_1/initial%20bindings/initial_bindings.dart';
 import 'package:flutter_application_1/screens/availabe%20screen/available_screen.dart';
@@ -13,12 +14,12 @@ import 'package:get/get.dart';
 
 final List<GetPage<dynamic>> getPages = [
   GetPage(
-      name: ResponsiveViewer.routeName,
-      page: () => const ResponsiveViewer(),
-      binding: InitialBindings()),
-  GetPage(
       name: AuthStateChangeScreen.routeName,
       page: () => AuthStateChangeScreen(),
+      binding: InitialBindings()),
+  GetPage(
+      name: SplashScreen.routeName,
+      page: () => SplashScreen(),
       binding: InitialBindings()),
   GetPage(
       name: LoginScreen.routeName,

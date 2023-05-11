@@ -6,6 +6,8 @@ import '../../consts/consts.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
+  static const routeName = '/';
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 } 
@@ -16,7 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Get.toNamed(AuthStateChangeScreen.routeName);
     });
     super.initState();
-  } 
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
